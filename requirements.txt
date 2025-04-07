@@ -1,0 +1,6 @@
+google-generativeai
+flask
+python-dotenv
+SpeechRecognition
+whisper
+pydub

@@ -51,6 +51,7 @@
         <label for="question">Enter your question:</label><br>
         <input type="text" id="question" name="question"><br><br>
         <input type="submit" value="Submit">
+        <button id="start-record-btn" type="button">Start Recording</button>
     </form>
     {% if answer %}
         <p>Answer: {{ answer }}</p>
@@ -59,5 +60,18 @@
         <source src="../audio/Romeo_and_Juliet_Act_1_64kb.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    {% if answer %}
+        <audio controls autoplay>
+            <source src="/tts?text={{ answer }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    {% endif %}
+    <script>
+        const recordButton = document.getElementById('start-record-btn');
+        recordButton.addEventListener('click', async () => {
+            // Implement audio recording and transcription logic here
+            alert('Recording functionality will be implemented soon!');
+        });
+    </script>
 </body>
 </html>

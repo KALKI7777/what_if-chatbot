@@ -1,7 +1,7 @@
 import whisper
 
 model = whisper.load_model("base")  # Options: tiny, base, small, medium, large
-result = model.transcribe(r"audio\Romeo_and_Juliet_Act_1_64kb.mp3")
+result = model.transcribe(r"R:\KuKu FM project\audio\Romeo_and_Juliet_Act_1_64kb.mp3")
 print(result["text"])
 
 # Save to file

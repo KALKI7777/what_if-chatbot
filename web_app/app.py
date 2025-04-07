@@ -8,7 +8,6 @@ import knowledge_base
 import rag_system
 import llm_service
 from llm_service import model
-import stt_service
 import tts_service
 
 app = Flask(__name__)
@@ -61,6 +60,12 @@ Based *only* on the provided Audiobook Context and Conversation History, answer 
         session['chat_history'].append(f"AI: {answer}")
 
     return render_template("index.html", answer=answer)
+
+@app.route("/tts")
+def tts():
+    text = request.args.get("text")
+    tts_service.simulate_tts(text)
+    return ""
 
 if __name__ == "__main__":
     app.run(debug=True)

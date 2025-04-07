@@ -1,5 +1,7 @@
 import speech_recognition as sr
 import os
+import pydub
+from pydub import AudioSegment
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -7,16 +9,27 @@ WIT_AI_KEY = os.getenv("WIT_AI_KEY")  # Replace with your actual Wit.ai API key
 
 def transcribe_audio():
     transcription = ""
-    audio_dir = "audio"
+    audio_dir = r"R:\KuKu FM project\audio"
     r = sr.Recognizer()
 
     for filename in os.listdir(audio_dir):
         if filename.endswith(".mp3"):
             fpath = os.path.join(audio_dir, filename)
             try:
-                with sr.AudioFile(fpath) as source:
-                    audio = r.record(source)
-                transcription += r.recognize_wit(audio, key=WIT_AI_KEY) + "\\n"
+                # Convert MP3 to WAV
+                try:
+                    audio = AudioSegment.from_mp3(fpath)
+                    wav_path = fpath.replace(".mp3", ".wav")
+                    audio.export(wav_path, format="wav", codec="pcm_s16le")
+
+                    with sr.AudioFile(wav_path) as source:
+                        audio_data = r.record(source)
+
+                    transcription += r.recognize_wit(audio_data, key=WIT_AI_KEY) + "\\n"
+                    os.remove(wav_path)  # Remove the temporary WAV file
+                except FileNotFoundError as e:
+                    print(f"FileNotFoundError: {e}")
+                    transcription += f"FileNotFoundError: Could not find ffmpeg. Please install ffmpeg and add it to your PATH." + "\\n"
             except sr.UnknownValueError:
                 print(f"Wit.ai could not understand audio from {filename}")
                 transcription += f"Wit.ai could not understand audio from {filename}" + "\\n"

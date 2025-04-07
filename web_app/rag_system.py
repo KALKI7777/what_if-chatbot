@@ -4,7 +4,7 @@ def retrieve_relevant_context(book_id, user_query):
     """
     print(f"[RAG System] Searching for context related to: '{user_query}' in book '{book_id}'")
     try:
-        file_path = f"{book_id}.txt"  # Construct file path based on book_id
+        file_path = "web_app/romeo_and_juliet.txt"  # Construct file path based on book_id
         with open(file_path, "r") as f:
             text = f.read()
         # Basic context retrieval: return the entire text
@@ -13,3 +13,4 @@ def retrieve_relevant_context(book_id, user_query):
         return context
     except FileNotFoundError:
         return "Context: Transcribed text not found. Please run the audio transcription first."
+
