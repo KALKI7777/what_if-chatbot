@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.whl
+*.manifest
+
+# PyInstaller
+#  Usually these files are written into a _MEIPASS folder in the "onefile" mode
+#  https://github.com/pyinstaller/pyinstaller/wiki/Recipe-Bundling-Data-Files#using-file-spec-files
+_MEIPASS/
+_MEIPASS2/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.pytest_cache/
+*.mo
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# General
+*.swp
+*.bak
+*.tmp
+*.~
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+output.txt
+test/
